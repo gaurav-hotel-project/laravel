@@ -56,7 +56,7 @@ class ServiceController extends Controller
         $data->photo=$imgPath;
         $data->save();
 
-        return redirect('admin/service/create')->with('success','Data has been added.');
+        return redirect('admin/service')->with('success','Data has been added.');
     }
 
     /**
@@ -111,11 +111,10 @@ class ServiceController extends Controller
         $data->photo=$imgPath;
         $data->save();
 
-        return redirect('admin/service/'.$id.'/edit')->with('success','Data has been updated.');
+        return redirect('admin/service/')->with('success','Data has been updated.');
     }
 
     /**
-     * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

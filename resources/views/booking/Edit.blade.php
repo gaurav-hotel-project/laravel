@@ -22,7 +22,7 @@
                             <p class="text-success">{{session('success')}}</p>
                             @endif
                             <div class="table-responsive">
-                                <form method="post"action="{{url('admin/booking/')}}">
+                                <form method="post" action="{{url('admin/booking/'.$booking->id)}}">
                                     @csrf
                                     @method('put')
                                     <table class="table table-bordered" >
@@ -76,7 +76,7 @@
                                                 @endforeach
                                             </select>
                                         </td> --}}
-                                        <tr><td colspan="2">
+                                        <tr><td colspan="4">
                                            <a href="{{url('admin/booking')}}" class="btn btn-primary">Back</a>
                                             <input type="submit" class="btn btn-primary" />
                                         </td> 

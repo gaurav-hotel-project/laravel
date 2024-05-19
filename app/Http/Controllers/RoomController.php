@@ -17,7 +17,7 @@ class RoomController extends Controller
     {
         $data=Room::get();
         return view('room.index',['data'=>$data]);
-        //return response()->json($data);
+       
     }
 
     public function index()
@@ -34,6 +34,7 @@ class RoomController extends Controller
     public function create()
     {
         $roomtypes=RoomType::all();
+        
         return view('room.create',['roomtypes'=>$roomtypes]);
     }
 
@@ -96,7 +97,7 @@ class RoomController extends Controller
         $data->title=$request->title;
         $data->save();
 
-        return redirect('admin/rooms/'.$id.'/edit')->with('success','Data has been updated.');
+        return redirect('admin/rooms')->with('success','Data has been updated.');
     }
 
     /**

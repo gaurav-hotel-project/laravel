@@ -113,8 +113,7 @@ Route::get('admin/customer/{id}/edit',[CustomerController::class,'edit']);
 Route::post('admin/customer/update/{id}',[CustomerController::class,'update']);
 Route::resource('admin/customer',CustomerController::class);
 
-// Delete Image
-Route::get('admin/roomtypeimage/delete/{id}',[RoomtypeController::class,'destroy_image']);
+
 
 // Department
 Route::get('admin/department/{id}/delete',[StaffDepartment::class,'destroy']);
@@ -132,12 +131,13 @@ Route::resource('admin/staff',StaffController::class);
 
 // Booking
 
-Route::get('admin/booking',[BookingController::class,'index']);
-Route::get('admin/booking/create',[BookingController::class ,'create']);
+ Route::get('admin/booking',[BookingController::class,'index']);
+
+ Route::get('admin/booking/create',[BookingController::class ,'create']);
 Route::post('admin/booking',[BookingController::class,'store']);
 Route::get('admin/booking/{id}/edit',[BookingController::class,'edit']);
 Route::post('admin/booking/{id}',[BookingController::class,'update']);
-// Route::post('admin/booking/update/',[BookingController::class]);
+Route::post('admin/booking/update/',[BookingController::class]);
 Route::get('admin/booking/{id}',[BookingController::class,'show']);
 Route::get('admin/booking/{id}/delete',[BookingController::class, 'destroy']);
 

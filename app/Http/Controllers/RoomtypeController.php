@@ -21,6 +21,7 @@ class RoomtypeController extends Controller
     public function index()
     {
         $data = RoomType::all();
+    
         return view('Roomtype.index', ['data' => $data]);
      
     }

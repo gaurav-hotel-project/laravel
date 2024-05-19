@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\Customer;
+
 use App\Models\RoomType;
 use App\Models\Booking;
-use App\Models\Room;
+use App\Models\Customer;
 use Stripe\Checkout\Session;
 
 class BookingController extends Controller
@@ -16,8 +16,12 @@ class BookingController extends Controller
     //
     public function index()
     {
-        $booking = Booking::all(); 
-        $roomtypes = RoomType::all();
+        
+        $booking = Booking::all();
+        
+        $booking=DB::table('room_types')->join('bookings', 'bookings.room_type_id', '=', 'room_types.id')->get() ;
+        
+        
         return view('booking.index',compact('booking'));
     }
 
@@ -51,7 +55,8 @@ class BookingController extends Controller
         $booking->guest_email = $request->guest_email;
         $booking->check_in_date = $request->check_in_date;
         $booking->check_out_date = $request->check_out_date;
-        $booking->room_type_id = $request->room_type_id;
+       // $booking->room_type_id = $request->room_type_id;
+        $booking->room_type_id=$request->rt_id;
         
         $booking->num_guests = $request->num_guests;
         $booking->total_price = $request->total_price;
@@ -100,7 +105,7 @@ class BookingController extends Controller
         $booking->guest_email = $request->guest_email;
         $booking->check_in_date = $request->check_in_date;
         $booking->check_out_date = $request->check_out_date;
-        $booking->room_type_id = $request->room_type_id;   
+        $booking->room_type_id=$request->room_type_id;        
         $booking->num_guests = $request->num_guests;
         $booking->total_price = $request->total_price;
         $booking->booking_status = $request->booking_status;

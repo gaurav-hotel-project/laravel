@@ -35,14 +35,14 @@
                                         <tr>
                                             
 
-                                         @foreach ($booking as $booking)
+                                         @foreach ($booking as $booking )
+                              
                                              
                                         
                                              <td>{{$booking->booking_id}}</td>
                                             <td>{{$booking->guest_name}}</td>
                                             <td>{{$booking->guest_email}}</td>
-                                            <?php $room_type_id = DB::table('room_types')->where('id', $booking->room_type_id)->first(); ?>
-                                            <td value="{{$booking->room_type_id}}">{{$room_type_id->title }}</td>
+                                            <td>{{($booking->title)}}</td>
                                           <td>{{$booking->check_in_date}}</td>                                            
                                           <td>{{$booking->check_out_date}}</td>                                           
                                             <td>{{$booking->total_price}}</td>
@@ -56,6 +56,7 @@
 
                                         </tr>
                                         @endforeach
+                                 
                                         
                                     </tbody>
                                 </table>
