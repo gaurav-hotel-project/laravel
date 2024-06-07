@@ -16,10 +16,13 @@ class BookingController extends Controller
     //
     public function index()
     {
-        
+        $bookings = DB::table('bookings')
+        ->join('room_types', 'bookings.room_type_id', '=', 'room_types.id')
+        ->select('bookings.*', 'room_types.title as room_type_title')
+        ->get();
         $booking = Booking::all();
         
-        $booking=DB::table('room_types')->join('bookings', 'bookings.room_type_id', '=', 'room_types.id')->get() ;
+       
         
         
         return view('booking.index',compact('booking'));
@@ -55,7 +58,6 @@ class BookingController extends Controller
         $booking->guest_email = $request->guest_email;
         $booking->check_in_date = $request->check_in_date;
         $booking->check_out_date = $request->check_out_date;
-       // $booking->room_type_id = $request->room_type_id;
         $booking->room_type_id=$request->rt_id;
         
         $booking->num_guests = $request->num_guests;
@@ -82,9 +84,11 @@ class BookingController extends Controller
 
     public function edit($booking_id)
     {
-        $booking = Booking::find($booking_id);
-        $roomtypes = RoomType::all();
-        return view('booking.edit',['booking'=>$booking,'roomtypes'=>$roomtypes],compact('booking'));
+        $booking = Booking::find($booking_id );
+        $roomTypes = RoomType::all();
+        // dd($booking->room_type_id);
+        
+        return view('booking.edit',compact('booking','roomTypes'));
     }
 
     public function update(Request $request, $booking_id)
@@ -109,11 +113,12 @@ class BookingController extends Controller
         $booking->num_guests = $request->num_guests;
         $booking->total_price = $request->total_price;
         $booking->booking_status = $request->booking_status;
-        dd($booking_id);
+      
         
         $booking->save();
   
-        return redirect('admin/booking')->with('success', 'Booking updated successfully');
+        return redirect()->route('booking.index')->with('success', 'Booking updated successfully');
+
 }
 
 
