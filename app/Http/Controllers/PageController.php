@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\RoomType;
 use App\Models\Room;
+use App\Models\User;
+
+use Illuminate\Support\Str;
 
 use Mail;
 
@@ -46,6 +49,16 @@ class PageController extends Controller
         return view('thankyou');
     }
 
+    function forgotpassword(){
+        return view('forgotpassword');
+    }
+
+    function resetpassword(){
+        return view('reset-password');
+    }
+        
+
+
     // Save Contact Us Form
     function save_contactus(Request $request){
         $request->validate([
@@ -69,4 +82,5 @@ class PageController extends Controller
 
         return redirect('page/contact-us')->with('success','Mail has been sent.');
     }
+
 }

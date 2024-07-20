@@ -1,7 +1,7 @@
 @extends('frontlayout')
 @section('content')
 <div class="container my-4">
-	<h3 class="mb-3">Login</h3>
+	<h3 class="mb-3">Customer Login</h3>
 	@if(Session::has('error'))
 	<p class="text-danger">{{session('error')}}</p>
 	@endif
@@ -18,6 +18,11 @@
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" class="btn btn-primary" /></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<a href="{{url('forgotpassword')}}">Forgot Password?</a>
+				</td>
 			</tr>
 		</table>
 	</form>

@@ -11,6 +11,9 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+
 
 use App\Http\Controllers\HomeController;
 use App\Models\Room;
@@ -36,6 +39,17 @@ Route::get('page/register',[PageController::class,'register']);
 Route::get('page/frontlogin',[PageController::class,'frontlogin']);
 Route::get('page/Room',[pageController::class,'room']);
 Route::Post('page/Thankyou',[pageController::class,'Thankyou']);
+//Route::get('page/forgotpassword',[pageController::class,'forgotpassword']);
+Route::Post('page/reset-password',[pageController::class,'resetpassword']);
+
+Route::get('forgotpassword', [ForgotPasswordController::class, 'showForgetPasswordForm']);
+Route::post('ForgetPassword', [ForgotPasswordController::class, 'ForgetPassword']);
+Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
+
+
+
+
 
 
     

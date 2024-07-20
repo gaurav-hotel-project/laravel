@@ -12,11 +12,12 @@
 			background-color: #6520d5;
 			color: black;
 		}
+
 		
 		</style>
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: #e3f2fd !important ">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: black !important ">
 	  <div class="container">
 	    <a class="navbar-brand" href="{{url('/')}}"@style="color:#6520d5">The Grand Ark Hotel</a>
 	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,7 +37,6 @@
 	        @else
 	        <a class="nav-link" href="{{url('page/frontlogin')}}">Login</a>
 	        <a class="nav-link" href="{{url('page/register')}}">Register</a>
-	        <a class="nav-link btn btn-primary" href="{{url('page/booking')}}">Booking</a>
 	        @endif
 	      </div>
 	    </div>

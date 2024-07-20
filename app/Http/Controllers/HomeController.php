@@ -35,6 +35,7 @@ class HomeController extends Controller
         return view('room.index');
     }
 
+    
     // Add Testimonial
     function add_testimonial(){
         return view('add-testimonial');

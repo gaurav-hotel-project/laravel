@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\Apiroomtype;
 use App\Http\Controllers\Api\ApiStaffController;
 use App\Http\Controllers\Api\ApiServiceController;
 use App\Http\Controllers\Api\ApiBookingController;
+use App\Http\Controllers\Api\ApiprofileController;
 
 
 
@@ -46,3 +47,5 @@ Route::get('/booking-list',[ApiBookingController::class, 'showBooking']);
 Route::post('/save-booking',[ApiBookingController::class, 'saveBooking']);
 Route::post('/update-booking',[ApiBookingController::class, 'updateBooking']);
 Route::post('/delete-booking',[ApiBookingController::class, 'deleteBooking']);
+
+Route::post('/profile-Create',[ApiprofileController::class, 'showProfile']);

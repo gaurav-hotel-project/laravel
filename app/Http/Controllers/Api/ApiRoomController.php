@@ -52,10 +52,20 @@ class ApiRoomController extends Controller
 
     public function deleteroom(Request $request){
         $validator = $request->validate([
-            'room_id' => 'required'
+            'room_id' => 'required',
+
+
         ]);
         $data = $this->room->find($request->room_id);
-        $data->delete();
-        return response()->json(['message' => 'Room Data Deleted Successfully']);
+        $test=$this->room->find($request->room_type_id);
+        
+        if($test==null){
+            $data->delete();
+            return response()->json(['message' => 'Room Data Deleted Successfully']);
+        }
+        else{
+            return response()->json(['message' => 'Room type is  Already Available ']);
+
+        }
     }
 }

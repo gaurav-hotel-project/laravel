@@ -113,6 +113,7 @@ class BookingController extends Controller
         $booking->num_guests = $request->num_guests;
         $booking->total_price = $request->total_price;
         $booking->booking_status = $request->booking_status;
+        
       
         
         $booking->save();
@@ -122,11 +123,22 @@ class BookingController extends Controller
 }
 
 
-    public function destroy($id)
-    {
-        $booking = Booking::find($id);
+   
+public function destroy($id)
+{
+    // Find the booking by ID
+    $booking = Booking::find($id);
+
+    // Check if the booking exists
+    if ($booking) {
+        // Soft delete the booking
         $booking->delete();
 
+        // Redirect back with a success message
         return redirect('admin/booking')->with('success', 'Booking deleted successfully');
+    } else {
+        // If the booking doesn't exist, redirect back with an error message
+        return redirect('admin/booking')->with('error', 'Booking not found');
+    }
 }
 }
