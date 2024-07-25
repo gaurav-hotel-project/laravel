@@ -11,7 +11,7 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\Auth\ForgotPasswordController;
+//use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 
 
@@ -33,19 +33,17 @@ Route::get('/',[HomeController::class,'home']);
 Route::get('page/servicedetail',[PageController::class,'servicedetail']);
 Route::get('/page/login',[PageController::class.'login']);
 Route::get('page/about-us',[PageController::class,'about_us']);
-Route::get('page/contact-us',[PageController::class,'contact_us']);
+// Route::get('page/contactus',[PageController::class,'contactus']);
 Route::get('page/booking',[PageController::class,'booking']);
 Route::get('page/register',[PageController::class,'register']);
 Route::get('page/frontlogin',[PageController::class,'frontlogin']);
 Route::get('page/Room',[pageController::class,'room']);
 Route::Post('page/Thankyou',[pageController::class,'Thankyou']);
 //Route::get('page/forgotpassword',[pageController::class,'forgotpassword']);
-Route::Post('page/reset-password',[pageController::class,'resetpassword']);
-
-Route::get('forgotpassword', [ForgotPasswordController::class, 'showForgetPasswordForm']);
-Route::post('ForgetPassword', [ForgotPasswordController::class, 'ForgetPassword']);
-Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
-Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
+// Route::get('forgotpassword', [ForgotPasswordController::class, 'showForgetPasswordForm']);
+// Route::post('ForgetPassword', [ForgotPasswordController::class, 'ForgetPassword']);
+// Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+// Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
 
 
 
@@ -104,10 +102,11 @@ Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('
 
 Route::get('admin/login',[AdminController::class,'login']);
 Route::post('admin/login',[AdminController::class,'check_login']);
-Route::get('admin/logout',[AdminController::class,'logout']);
+Route::get('admin/logout',[AdminController::class,'logout'])->name('logout');
 
 // Admin Dashboard
-Route::get('/admin/dashboard',[AdminController::class,'dashboard']);
+Route::get('admin/dashboard',[AdminController::class,'dashboard'])->name('dashboard');
+
 
 // Banner Routes
 Route::get('admin/banner/{id}/delete',[BannerController::class,'destroy']);

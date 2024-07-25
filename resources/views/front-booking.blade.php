@@ -17,7 +17,11 @@
             <table class="table table-bordered">
                 <tr>
                     <th>Customer Name <span class="text-danger">*</span></th>
-                    <td><input name="customer_name" type="text" class="form-control" /></td>
+                    <td><input name="guest_name" type="text" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <th>Email <span class="text-danger">*</span></th>
+                    <td><input name="guest_email" type="email" class="form-control" /></td>
                 </tr>
                 <tr>
                     <th>CheckIn Date <span class="text-danger">*</span></th>
@@ -47,11 +51,11 @@
                 </tr>
                 <tr>
                     <th>Total Adults <span class="text-danger">*</span></th>
-                    <td><input name="total_adults" type="number" class="form-control" /></td>
+                    <td><input name="num_guests" type="number" class="form-control" /></td>
                 </tr>
                 <tr>
                     <th>Total Children</th>
-                    <td><input name="total_children" type="number" class="form-control" /></td>
+                    <td><input name="num_guests" type="number" class="form-control" /></td>
                 </tr>
             </tr>
             <th>Payment Method <span class="text-danger">*</span></th>
@@ -102,9 +106,7 @@
             $.ajax({
                 url:"{{url('/page/Thankyou')}}/available-rooms/"+_checkindate,
                 dataType:'json',
-                beforeSend:function(){
-                    $(".room-list").html('<option>--- Loading ---</option>');
-                },
+               
                 success:function(res){
                     var _html='';
                     $.each(res.data,function(index,row){

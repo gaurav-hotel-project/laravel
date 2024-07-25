@@ -27,6 +27,8 @@ Route::get('/customer-list',[ApiCustomerController::class, 'showCustomer']);
 Route::post('/create-customer',[ApiCustomerController::class, 'saveCustomer']);
 Route::post('/update-customer',[ApiCustomerController::class, 'UpdateCustomer']);
 Route::Post('/delete-customer',[ApiCustomerController::class, 'deleteCustomer']);
+Route::post('/contectus',[ApiCustomerController::class, 'contectus']);
+
 
 Route::get('/Staff-list',[ApiStaffController::class, 'showStaff']);
 Route::post('/create-staff',[ApiStaffController::class, 'saveStaff']);

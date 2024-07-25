@@ -166,16 +166,15 @@
 			<p>Wake up to breathtaking views from the comfort of your room at <span style="color:blue;">The Grand Ark Hotel</span>. Our offered rooms provide not only a cozy retreat but also a visual feast. Whether it's a stunning cityscape or serene landscapes, our carefully chosen locations and thoughtfully positioned windows ensure a captivating experience.</p>
 		</div>
 		<div class="row my-4">
-			@foreach($roomTypes as $rtype)
+			@foreach($roomTypes as $d)
 			<div class="col-md-3">
 				<div class="card">
-					<h5 class="card-header">{{$rtype->title}}</h5>
+					<h5 class="card-header">{{$d->title}}</h5>
 					<div class="card-body">
                         	<a href="#" >
-								<img class="card-img-top" src="{{asset('/public/uploads/Roomtype/'.$rtype->img_src)}} " alt="Card image cap" style="height: 271px">
-                        	</a>
+								<img class="card-img-top" src="{{asset('storage/app/'.$d->img_src)}}" alt="Card image cap">
 							{{-- <button class="btn btn-primary">Book Now</button> --}}
-							<a href="{{ ('page/booking') }}" class="btn btn-primary" style="margin-top: 11px;
+							<a href="{{ ('page/booking/',.$d->id) }}" class="btn btn-primary" style="margin-top: 11px;
 							">Book Now</a>
                         </td>
 					</div>

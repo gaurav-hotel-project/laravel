@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\contect;
 use Illuminate\Http\Request;
 
 
@@ -93,5 +94,26 @@ public function deleteCustomer(Request $request){
     }else{
     $data->delete();
     return response()->json(['message' => 'customer Data Deleted Successfully']);}
+}
+
+
+
+public function contectus(Request $request){
+
+    $request->validate([
+        'name'=>'required',
+        'email'=>'required',
+        'Phone'=>'required',
+        'message'=>'required',
+    ]);
+
+    $data = new contect();
+     $data->name=$request->name;
+     $data->email=$request->email;
+     $data->Phone=$request->Phone;
+     $data->message=$request->message;
+     $data->save();
+
+     return response()->json(['message' => 'contect Data Added Successfully', 'data' => $data]);
 }
 }

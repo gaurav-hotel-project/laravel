@@ -73,4 +73,8 @@ class ApiController extends Controller
         $data->delete();
         return response()->json(['message' => 'Banner Data Deleted Successfully']);
     }
+
+
+
+    
 }

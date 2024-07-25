@@ -57,30 +57,56 @@ class PageController extends Controller
         return view('reset-password');
     }
         
+    function contactus(){
 
+        return view('contact-us');
 
-    // Save Contact Us Form
-    function save_contactus(Request $request){
+    }
+
+    public function contectus(Request $request){
+
         $request->validate([
-            'full_name'=>'required',
+            'name'=>'required',
             'email'=>'required',
-            'subject'=>'required',
-            'msg'=>'required',
+            'Phone'=>'required',
+            'message'=>'required',
         ]);
 
-        $data = array(
-            'name'=>$request->full_name,
-            'email'=>$request->email,
-            'subject'=>$request->subject,
-            'msg'=>$request->msg,
-        );
+        $data = new User();
+        
 
-        // Mail::send('mail', $data, function($message){
-        //     $message->to('codeartisanlab2607@gmail.com', 'Suraj Kumar')->subject('Contact Us Query');
-        //     $message->from('codeartisanlab2607@gmail.com','CodeArtisanLab');
-        // });
+         $data->name=$request->name;
+         $data->email=$request->email;
+         $data->Phone=$request->Phone;
+         $data->message=$request->message;
+         $data->save();
+         return redirect('page/contact-us')->with('success','Mail has been sent.');
 
-        return redirect('page/contact-us')->with('success','Mail has been sent.');
     }
+
+
+    // // // Save Contact Us Form
+    // // function save_contactus(Request $request){
+    // //     $request->validate([
+    // //         'full_name'=>'required',
+    // //         'email'=>'required',
+    // //         'subject'=>'required',
+    // //         'msg'=>'required',
+    // //     ]);
+
+    // //     $data = array(
+    // //         'name'=>$request->full_name,
+    // //         'email'=>$request->email,
+    // //         'subject'=>$request->subject,
+    // //         'msg'=>$request->msg,
+    // //     );
+
+    //     // Mail::send('mail', $data, function($message){
+    //     //     $message->to('codeartisanlab2607@gmail.com', 'Suraj Kumar')->subject('Contact Us Query');
+    //     //     $message->from('codeartisanlab2607@gmail.com','CodeArtisanLab');
+    //     // });
+
+    //     return redirect('page/contact-us')->with('success','Mail has been sent.');
+    // }
 
 }
